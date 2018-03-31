@@ -39,5 +39,10 @@ jobs:
           command: |
             mkdir -p ./eslint
             ./node_modules/.bin/eslint . --format=junit -o ./eslint/eslint.xml
+      
+      - store_test_results:
+          path: ./eslint
+      - store_artifacts:
+          path: ./eslint
 
 
