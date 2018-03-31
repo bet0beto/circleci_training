@@ -34,6 +34,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: mkdir -p ./eslint && ./node_modules/.bin/eslint --format=junit -o ./eslint/eslint.xml .
+      - run:
+        name: linting
+        command: |
+          mkdir -p ./eslint
+          ./node_modules/.bin/eslint . --format=junit -o ./eslint/eslint.xml
 
 
