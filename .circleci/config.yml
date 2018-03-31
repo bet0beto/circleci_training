@@ -35,9 +35,9 @@ jobs:
         
       # run tests!
       - run:
-        name: linting
-        command: |
-          mkdir -p ./eslint
-          ./node_modules/.bin/eslint . --format=junit -o ./eslint/eslint.xml
+          name: linting
+          command: |
+            mkdir -p ./eslint
+            ./node_modules/.bin/eslint . --format=junit -o ./eslint/eslint.xml
 
 
