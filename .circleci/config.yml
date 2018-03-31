@@ -34,6 +34,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: mkdir -p $CIRCLE_TEST_REPORTS/eslint && ./node_modules/.bin/eslint --format=junit -o $CIRCLE_TEST_REPORTS/eslint/eslint.xml .
+      - run: mkdir -p ./eslint && ./node_modules/.bin/eslint --format=junit -o ./eslint/eslint.xml .
 
 
