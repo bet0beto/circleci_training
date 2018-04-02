@@ -29,7 +29,7 @@ jobs:
           name: linting
           command: |
             ls
-            ./node_modules/.bin/eslint . --format=junit -o eslint/eslint.xml
+            node_modules/.bin/eslint . --format junit -o eslint/eslint.xml
 
       - store_test_results:
           path: eslint
