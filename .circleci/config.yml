@@ -1,30 +1,22 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+jobs:
+
+  test:
+
+    docker:
+      - image: circleci/node:8.10
 
     steps:
+
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run: npm install
 
@@ -32,17 +24,12 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
+
       - run:
           name: linting
-          command: |
-            mkdir -p ./eslint
-            ./node_modules/.bin/eslint . --format=junit -o ./eslint/eslint.xml
-      
+          command: ./node_modules/.bin/eslint . --format=junit -o eslint/eslint.xml
+
       - store_test_results:
-          path: ./eslint
+          path: eslint
       - store_artifacts:
-          path: ./eslint
-
-
+          path: eslint
