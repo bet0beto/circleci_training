@@ -47,7 +47,7 @@ jobs:
 
       - run:
           name: bundle install
-          command: bundle install --jobs=4
+          command: bundle install --jobs=4 --path vendor/bundle
           when: always
 
       - save_cache:
