@@ -29,7 +29,8 @@ jobs:
 
       - run:
           name: linting
-          command: npm run lint -- --format junit -o reports/eslint.xml
+#          command: npm run lint -- --format junit -o reports/eslint.xml
+          command: npm run lint -- -f --format junit -o reports/eslint-checkstyle.xml
 
       - store_test_results:
           path: reports
@@ -44,7 +45,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-gems-
 
-      - run: bundle install --jobs=4
+      - run:
+          name: bundle install
+          command: bundle install --jobs=4
+          when: always
 
       - save_cache:
           paths:
@@ -54,6 +58,7 @@ jobs:
       - run:
           name: comment on pull request
           command: DANGER_GITHUB_API_TOKEN={GITHUB_PULLREQUEST_COMMENT_KEY} bundle exec danger
+          when: always
 
 workflows:
 
