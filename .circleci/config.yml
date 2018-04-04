@@ -36,15 +36,6 @@ jobs:
       - store_artifacts:
           path: reports
 
-  comment:
-
-    docker:
-      - image: circleci/ruby:2.4.1
-
-    steps:
-
-      - checkout
-
       - run: echo 'comment'
 
       - restore_cache:
@@ -68,10 +59,7 @@ workflows:
 
   version: 2
 
-  test_and_build:
+  build:
 
     jobs:
       - build
-      - comment:
-          requires:
-            - build
