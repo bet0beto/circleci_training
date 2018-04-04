@@ -47,7 +47,8 @@ jobs:
       - persist_to_workspace:
 
           root: ~/code
-          path: reports/*
+          paths:
+            - reports/*
 
   comment:
 
