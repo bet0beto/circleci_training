@@ -14,22 +14,48 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-node-modules-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - v1-dependencies-node-modules-
 
       - run: npm install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-node-modules-{{ checksum "package.json" }}
 
       - run:
           name: linting
-          command: npm run lint -- --format junit -o eslint/eslint.xml
+          command: npm run lint -- --format junit -o reports/eslint.xml
 
       - store_test_results:
-          path: eslint
+          path: reports
       - store_artifacts:
-          path: eslint
+          path: reports
+
+  comment:
+
+    docker:
+      - image: circleci/ruby:2.4.1
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-gems-{{ checksum "Gemfile" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-gems-
+
+      - run: bundle install --jobs=4
+
+      - save_cache:
+          paths:
+            - vendor
+          key: v1-dependencies-gems-{{ checksum "Gemfile" }}
+
+      - run:
+          name: comment on pull request
+          command: DANGER_GITHUB_API_TOKEN={GITHUB_PULLREQUEST_COMMENT_KEY} bundle exec danger
