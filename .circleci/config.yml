@@ -11,6 +11,8 @@ jobs:
 
       - checkout
 
+      - run: echo 'build'
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -42,6 +44,8 @@ jobs:
     steps:
 
       - checkout
+
+      - run: echo 'comment'
 
       - restore_cache:
           keys:
