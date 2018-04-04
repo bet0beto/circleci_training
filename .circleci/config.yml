@@ -63,3 +63,16 @@ jobs:
       - run:
           name: comment on pull request
           command: DANGER_GITHUB_API_TOKEN={GITHUB_PULLREQUEST_COMMENT_KEY} bundle exec danger
+
+workflows:
+
+  version: 2
+
+  test_and_build:
+
+    jobs:
+
+      - build
+      - comment
+          requires:
+            - build
