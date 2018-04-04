@@ -72,7 +72,7 @@ workflows:
 
     jobs:
 
-      - build
-      - comment
+      - build:
+      - comment:
           requires:
             - build
