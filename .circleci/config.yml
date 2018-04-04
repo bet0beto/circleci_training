@@ -36,31 +36,9 @@ jobs:
 
       - store_test_results:
           path: reports
+
       - store_artifacts:
           path: reports
-
-      - run: echo 'comment'
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-gems-{{ checksum "Gemfile" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-gems-
-
-      - run:
-          name: bundle install
-          command: bundle install --jobs=4 --path vendor/bundle
-          when: always
-
-      - save_cache:
-          paths:
-            - vendor
-          key: v1-dependencies-gems-{{ checksum "Gemfile" }}
-
-      - run:
-          name: comment on pull request
-          command: DANGER_GITHUB_API_TOKEN={GITHUB_PULLREQUEST_COMMENT_KEY} bundle exec danger
-          when: always
 
       - persist_to_workspace:
 
@@ -86,6 +64,27 @@ jobs:
       - run: echo 'comment'
 
       - run: ls ~/code/reports
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-gems-{{ checksum "Gemfile" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-gems-
+
+      - run:
+          name: bundle install
+          command: bundle install --jobs=4 --path vendor/bundle
+          when: always
+
+      - save_cache:
+          paths:
+            - vendor
+          key: v1-dependencies-gems-{{ checksum "Gemfile" }}
+
+      - run:
+          name: comment on pull request
+          command: DANGER_GITHUB_API_TOKEN={GITHUB_PULLREQUEST_COMMENT_KEY} bundle exec danger
+          when: always
 
 
 workflows:
