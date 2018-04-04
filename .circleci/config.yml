@@ -71,8 +71,7 @@ workflows:
   test_and_build:
 
     jobs:
-
       - build
       - comment:
-        requires:
-          - build
+          requires:
+            - build
