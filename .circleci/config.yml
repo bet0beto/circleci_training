@@ -30,7 +30,7 @@ jobs:
       - run:
           name: linting
 #          command: npm run lint -- --format junit -o reports/eslint.xml
-          command: npm run lint -- --format checkstyle -o reports/eslint-checkstyle.xml
+          command: npm run lint -- --format="checkstyle" --output-file="reports/eslint-checkstyle.xml"
 
       - store_test_results:
           path: reports
