@@ -4,7 +4,7 @@ import { message, danger } from 'danger';
 const fs = require('fs');
 // import path from 'path';
 const path = require('path');
-// const cheerio = require('cheerio');
+const cheerio = require('cheerio');
 
 // const modifiedMD = danger.git.modified_files.join("- ");
 // message("Changed Files in this PR: \n - " + modifiedMD);
