@@ -16,9 +16,10 @@ const xml = fs.readFileSync(`${path.join(__dirname, 'reports', 'eslint-checkstyl
 
 console.log(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`);
 console.log(xml);
-const lintResult = cheerio.load(xml);
-lintResult('file').each((i, file) => {
-   file.children('error').each((i, error) => {
+const $ = cheerio.load(xml);
+$('file').each((i, file) => {
+   $(file).children('error').each((i, e) => {
+        const error = $(e);
         message(error.attr('message'), file.attr('name'), error.attr('line'));
    });
 });
