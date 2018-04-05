@@ -20,6 +20,7 @@ const $ = cheerio.load(xml);
 $('file').each((i, file) => {
    $(file).children('error').each((i, e) => {
         const error = $(e);
+        console.log(path.relative('/home/circleci/code/', $(file).attr('name')));
         fail(error.attr('message'), path.relative('/home/circleci/code/', $(file).attr('name')), error.attr('line'));
    });
 });
