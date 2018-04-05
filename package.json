@@ -15,6 +15,7 @@
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "danger": "^3.4.5",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
