@@ -1,6 +1,9 @@
-import { message } from 'danger';
-import fs from 'fs';
-import path from 'path';
+// import { message } from 'danger';
+const { message, danger } = require('danger');
+// import fs from 'fs';
+const fs = require('fs');
+// import path from 'path';
+const path = require('path');
 // const cheerio = require('cheerio');
 
 // const modifiedMD = danger.git.modified_files.join("- ");
