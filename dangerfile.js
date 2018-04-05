@@ -1,4 +1,4 @@
-import { message, danger } from 'danger';
+import { message, danger, fail } from 'danger';
 // const { message, danger } = require('danger');
 // import fs from 'fs';
 const fs = require('fs');
@@ -20,6 +20,6 @@ const $ = cheerio.load(xml);
 $('file').each((i, file) => {
    $(file).children('error').each((i, e) => {
         const error = $(e);
-        message(error.attr('message'), path.relative('/home/circleci/code/', $(file).attr('name')), error.attr('line'));
+        fail(error.attr('message'), path.relative('/home/circleci/code/', $(file).attr('name')), error.attr('line'));
    });
 });
