@@ -9,7 +9,7 @@ const path = require('path');
 // const modifiedMD = danger.git.modified_files.join("- ");
 // message("Changed Files in this PR: \n - " + modifiedMD);
 
-message('hello', 'index.js', 1);
+// message('hello', 'index.js', 1);
 
 
 const xml = fs.readFileSync(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`, 'utf8');
