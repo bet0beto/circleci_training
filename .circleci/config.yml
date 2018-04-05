@@ -33,7 +33,7 @@ jobs:
 
       - run: mkdir reports
 
-      - run: npm run danger
+      - run: npm run danger -- ci
 
       - run:
           name: linting
