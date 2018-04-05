@@ -44,54 +44,6 @@ jobs:
       - store_artifacts:
           path: reports
 
-      - persist_to_workspace:
-
-          root: ~/code
-          paths:
-            - reports/*
-
-  comment:
-
-    working_directory: ~/code
-
-    docker:
-
-      - image: ruby:2.4.1
-
-    steps:
-
-      - checkout
-
-      - attach_workspace:
-
-          at: ~/code
-
-      - run: echo 'comment'
-
-      - run: ls ~/code/reports
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-gems-{{ checksum "Gemfile" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-gems-
-
-      - run:
-          name: bundle install
-          command: bundle install --jobs=4 --path vendor/bundle
-          when: always
-
-      - save_cache:
-          paths:
-            - vendor
-          key: v1-dependencies-gems-{{ checksum "Gemfile" }}
-
-      - run:
-          name: comment on pull request
-          command: bundle exec danger
-          when: always
-
-
 workflows:
 
   version: 2
@@ -101,9 +53,3 @@ workflows:
     jobs:
 
       - build
-
-      - comment:
-
-          requires:
-
-            - build
