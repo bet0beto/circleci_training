@@ -33,6 +33,8 @@ jobs:
 
       - run: mkdir reports
 
+      - run: npm run danger
+
       - run:
           name: linting
           # command: npm run lint -- --format junit -o reports/eslint.xml
