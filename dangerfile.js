@@ -12,7 +12,7 @@ const path = require('path');
 message('hello', 'index.js', 1);
 
 
-const xml = fs.readSync(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`, 'utf8');
+const xml = fs.readFileSync(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`, 'utf8');
 // const lintResult = cheerio.load(xml);
 
 message(xml);
