@@ -13,6 +13,9 @@ message('hello', 'index.js', 1);
 
 
 const xml = fs.readFileSync(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`, 'utf8');
+
+console.log(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`);
+console.log(xml);
 // const lintResult = cheerio.load(xml);
 
 message(xml);
