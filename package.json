@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint",
-    "danger": "danger ci",
+    "danger": "danger",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
