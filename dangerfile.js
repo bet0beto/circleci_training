@@ -1,4 +1,4 @@
-const { fail } =  require('danger');
+const { fail } = require('danger');
 // const { message, danger } = require('danger');
 // import fs from 'fs';
 const fs = require('fs');
