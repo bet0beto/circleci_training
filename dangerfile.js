@@ -18,4 +18,4 @@ console.log(`${path.join(__dirname, 'reports', 'eslint-checkstyle.xml')}`);
 console.log(xml);
 // const lintResult = cheerio.load(xml);
 
-message(xml);
+message('test message');
