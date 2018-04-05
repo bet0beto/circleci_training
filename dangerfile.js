@@ -1,4 +1,4 @@
-import { message, danger } from 'danger';
+import { message } from 'danger';
 import fs from 'fs';
 import path from 'path';
 // const cheerio = require('cheerio');
