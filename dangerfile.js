@@ -1,5 +1,5 @@
-// import { message } from 'danger';
-const { message, danger } = require('danger');
+import { message, danger } from 'danger';
+// const { message, danger } = require('danger');
 // import fs from 'fs';
 const fs = require('fs');
 // import path from 'path';
